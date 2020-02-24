@@ -1,3 +1,8 @@
+# HotFlix
+
+This is my web application which you can use to check out the latest, popular and top rated movies. This application uses the MovieDB API.
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

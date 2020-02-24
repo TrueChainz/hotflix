@@ -1,0 +1,87 @@
+.Movie {
+    display: flex;
+    flex-direction: column;
+    width: 16%;
+    max-height: 390px;
+    align-items: flex-start;
+    margin-right: 5%;
+    color: whitesmoke;
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+}
+
+.rating {
+    margin: 7px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* border: 1px solid green; */
+    width: 33px;
+    height: 33px;
+    position: absolute;
+    background-color: black;
+    border-radius: 100%;
+    text-align: center;
+}
+
+.green {
+    border: 2px solid green;
+}
+
+.amber {
+    border: 2px solid #FFBF00;
+}
+
+.Movie:nth-child(5n) {
+    margin-right: 0px;
+} 
+
+.Movie img {
+    width: 100%;
+    min-height: 80%;
+    /* text-align: center; */
+}
+
+@media screen and (max-width: 1360px) {
+
+    .Movie:nth-child(5n) {
+        margin-right: 5.33333%;
+    }
+
+    .Movie:nth-child(4n) {
+        margin-right: 0px;
+        }
+
+    .Movie {
+        /* display: none; */
+        min-width: 21%;
+        margin-right: 5.333333%;
+        max-height: 360px;
+    }
+}
+
+@media screen and (max-width: 980px) {
+    .Movie {
+        max-height: 330px;
+    }
+}
+
+@media screen and (max-width: 680px) {
+    .Movie:nth-child(5n) {
+        margin-right: 5%;
+    }
+
+    .Movie:nth-child(4n) {
+        margin-right: 5%;
+    }
+
+    .Movie:nth-child(2n) {
+        margin-right: 0px;
+    }
+
+    .Movie {
+        width: 45%;
+        margin-right: 5%;
+
+    }
+}

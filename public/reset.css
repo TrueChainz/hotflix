@@ -1,0 +1,10 @@
+*, ::after, ::before {
+    margin: 0;
+    box-sizing: inherit;
+    padding: 0;
+}
+
+body {
+    font-family: 'Source Sans Pro', sans-serif;
+}
+

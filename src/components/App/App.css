@@ -1,0 +1,13 @@
+.App {
+  width: 100%
+}
+
+.container {
+  margin: auto;
+  min-height: 100%;
+  max-width: 1300px;
+}
+
+li {
+  list-style-type: none;
+}
