@@ -52,9 +52,9 @@ const MovieDB = {
         })
         return genresArray
     },
-    searchMovie: async (term, genre) => {
-        return
+    searchMovie: async (term, pageNumber) => {
+        const baseURL = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&language=en-US&page=${pageNumber}&include_adult=false`
     }
 }
 
-export {MovieDB, apiKey}
+export {MovieDB}
