@@ -1,20 +1,10 @@
-const apiKey = `7fbb4165a5639d9f08ecf4e47e0878ce`
+import {API_KEY} from '../env'
+
+const apiKey = API_KEY
+
+console.log(apiKey)
 
 const MovieDB = {
-    // movies: async (pageNumber, sortBy) => {
-    //     return fetch(`https://api.themoviedb.org/3/movie/${sortBy}?api_key=${apiKey}&language=en-US&page=${pageNumber}`)
-    //     .then(data => data.json())
-    //     .then(movieInfo => {
-    //         return movieInfo.results.map(movie => {
-    //             return {
-    //                 id: movie.id,
-    //                 title: movie.title,
-    //                 image: `https://image.tmdb.org/t/p/original/${movie.poster_path}`,
-    //                 rating: movie.vote_average
-    //             }
-    //         })
-    //     })
-    // },
     getImage: async (movieID) => {
         return fetch(`https://api.themoviedb.org/3/movie/${movieID}/images?api_key=${apiKey}&language=en-US`,
         {

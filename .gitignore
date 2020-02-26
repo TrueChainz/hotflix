@@ -1,7 +1,7 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
-# api key
-src/util
+#api key
+env.js
 
 # dependencies
 /node_modules
@@ -20,6 +20,7 @@ src/util
 .env.development.local
 .env.test.local
 .env.production.local
+.env
 
 npm-debug.log*
 yarn-debug.log*
