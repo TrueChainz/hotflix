@@ -2,8 +2,6 @@ import {API_KEY} from '../env'
 
 const apiKey = API_KEY
 
-console.log(apiKey)
-
 const MovieDB = {
     movies: async (pageNumber, sortBy) => {
         const baseURL = `https://api.themoviedb.org/3/movie/${sortBy}?api_key=${apiKey}&language=en-US&page=${pageNumber}`
@@ -34,7 +32,19 @@ const MovieDB = {
         return genresArray
     },
     searchMovie: async (term, pageNumber) => {
-        const baseURL = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&language=en-US&page=${pageNumber}&include_adult=false`
+        const baseURL = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&language=en-US&query=${term}&page=${pageNumber}&include_adult=false`
+        console.log(baseURL)
+        const fetchURL = await fetch(baseURL)
+        const data = await fetchURL.json()
+        const movies = data.results.map(movie => {
+            return {
+                id: movie.id,
+                title: movie.title,
+                image: `https://image.tmdb.org/t/p/original/${movie.poster_path}`,
+                rating: movie.vote_average
+            }
+        })
+        return movies
     }
 }
 
