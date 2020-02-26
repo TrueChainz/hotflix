@@ -5,15 +5,6 @@ const apiKey = API_KEY
 console.log(apiKey)
 
 const MovieDB = {
-    getImage: async (movieID) => {
-        return fetch(`https://api.themoviedb.org/3/movie/${movieID}/images?api_key=${apiKey}&language=en-US`,
-        {
-            headers: {
-                Authorization: `Bearer ${apiKey}`
-            }
-        })
-        .then(data => console.log(data))        
-    },
     movies: async (pageNumber, sortBy) => {
         const baseURL = `https://api.themoviedb.org/3/movie/${sortBy}?api_key=${apiKey}&language=en-US&page=${pageNumber}`
         const fetchURL = await fetch(baseURL)
