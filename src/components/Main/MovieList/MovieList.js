@@ -1,7 +1,5 @@
 import React from 'react'
 import Movie from '../Movie/Movie'
-// import
-
 
 const MovieList = ({ movies }) => {
     return (
@@ -20,9 +18,9 @@ const mainMovieList = {
 const movieLists = {
     display: 'flex',
     flexWrap: 'wrap',
-    paddingTop: '30px',
+    paddingTop: 30,
     width: '100%',
-    // justifyContent: 'space-between'
+    paddingBottom: 50
 }
 
 export default MovieList
