@@ -1,6 +1,4 @@
-import {API_KEY} from '../env'
-
-const apiKey = API_KEY
+const apiKey = process.env.REACT_APP_API_KEY
 
 const MovieDB = {
     movies: async (pageNumber, sortBy) => {
