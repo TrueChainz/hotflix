@@ -1,6 +1,6 @@
 # HotFlix
 
-This is my web application which you can use to check out the latest, popular and top rated movies. You can also get information about specific movies using the catalog section and clicking on a movie. This application uses the MovieDB API.
+This is my web application which you can use to check out the latest, popular and top rated movies. You can also get information about specific movies using the catalog section and clicking on a movie. This application uses the MovieDB API. To try out this application, click [here](https://frosty-booth-c6b1ac.netlify.com/).
 
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
