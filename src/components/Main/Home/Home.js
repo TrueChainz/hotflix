@@ -38,7 +38,7 @@ const Home = () => {
     }
 
     useEffect(() => {
-        MovieDB.movies(1, 'top_rated').then(movies => setMovies(movies))
+        MovieDB.movies(1, 'popular').then(movies => setMovies(movies))
       }, [])
 
 
