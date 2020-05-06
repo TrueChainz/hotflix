@@ -7,21 +7,24 @@ import MovieList from '../MovieList/MovieList'
 
 
 const Home = () => {
+    // The states that stores the current lists of movie results
     const [movies, setMovies] = useState([])
     const [sortBy, setSortBy] = useState('popular')
 
+    // This is an object used to reveal the different sorting types of movie
     const sortByOptions = {
         'Popular': 'popular',
         'Top Rated': 'top_rated',
         'Upcoming': 'upcoming'
     } 
   
+    // This function is an event listener which changes the sorting type of movies
     const changeMovies = (sortBy) => {
         setMovies([])
         MovieDB.movies(1, sortBy).then(movies => setMovies(movies))
     }
 
-    
+    // This function changes the colour of the sort by to allow the user to know which type the movie is sorted by
     const changeClassName = sortByOption => {
         if (sortByOption === sortBy) {
             return 'active'
@@ -37,15 +40,19 @@ const Home = () => {
         setSortBy(newSortBy)
     }
 
+    // This is the function which gets called when the componnent gets mounted
+    // It calls a function from the MovieDB file 
     useEffect(() => {
         MovieDB.movies(1, 'popular').then(movies => setMovies(movies))
       }, [])
 
-
+    // This function gets called when the sortby gets changed
+    // Changes the list of movies you according to the filter
     useEffect(() => {
         changeMovies(sortBy)
     }, [sortBy])
 
+    // This function is responsible for laying out the sort by in order and setting the classname to active if the user has clicked on it
     const renderSorts = () => {
         return Object.keys(sortByOptions).map(sortBy => {
             let sortByOptionValue = sortByOptions[sortBy]
@@ -75,6 +82,8 @@ const Home = () => {
     )
 }
 
+
+// Using styled component for the home component
 const homeTitleStyle = {
     display: 'flex',
     alignItems: 'center',
