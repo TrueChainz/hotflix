@@ -20,6 +20,19 @@
     background-color: rgb(32, 32, 32);
 }
 
+.title {
+    margin: 10px auto;
+    min-width: 100%;
+    max-height: 200px;
+    overflow: scroll;
+    overflow-x: hidden;
+    text-align: center;
+}
+
+.title::-webkit-scrollbar {
+    display: none;
+  }
+
 .rating {
     margin: 7px;
     display: flex;
