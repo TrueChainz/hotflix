@@ -20,7 +20,7 @@ const movieLists = {
     flexWrap: 'wrap',
     paddingTop: 30,
     width: '100%',
-    paddingBottom: 50
+    paddingBottom: 30
 }
 
 export default MovieList
