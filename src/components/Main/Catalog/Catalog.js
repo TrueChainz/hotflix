@@ -50,8 +50,9 @@ const Catalog = () => {
                     <div className='catalog-sort'>
                         <div className='search-field' style={searchBoxStyle}>
                             <input type="text" placeholder='Search movies...' value={term} onChange={changeTerm}/>
-                            <button onClick={searchMovie.bind(this, term, pageNumber)}className='search-button'><ion-icon name="search-outline"></ion-icon></button>
-
+                            <button onClick={searchMovie.bind(this, term, pageNumber)} className='search-button'>
+                                <ion-icon name="search-outline"></ion-icon>
+                            </button>
                         </div>
                     </div>
                 </div>
