@@ -7,11 +7,15 @@ const MovieDB = {
         const data = await fetchURL.json()
         const movies = await data.results
         const movieArray = await movies.map(movie => {
-            return {
-                id: movie.id,
-                title: movie.title,
-                image: `https://image.tmdb.org/t/p/original/${movie.poster_path}`,
-                rating: movie.vote_average
+            if (movie.adult == true) {
+                return
+            } else {
+                return {
+                    id: movie.id,
+                    title: movie.title,
+                    image: `https://image.tmdb.org/t/p/original/${movie.poster_path}`,
+                    rating: movie.vote_average
+                }
             }
         })
         return movieArray
