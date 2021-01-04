@@ -3,6 +3,7 @@ import './Home.css'
 import { MovieDB } from '../../../util/MovieDB'
 
 import MovieList from '../MovieList/MovieList'
+import Pagination from '../../Pagination/Pagination'
 
 
 
@@ -10,6 +11,7 @@ const Home = () => {
     // The states that stores the current lists of movie results
     const [movies, setMovies] = useState([])
     const [sortBy, setSortBy] = useState('popular')
+    const [number, setNumber] = useState(1)
 
     // This is an object used to reveal the different sorting types of movie
     const sortByOptions = {
@@ -17,11 +19,24 @@ const Home = () => {
         'Top Rated': 'top_rated',
         'Upcoming': 'upcoming'
     } 
+
+    const incrementPage = () => {
+        setNumber(number => number +1)
+    }
+
+    const decrementPage = () => {
+        if (number <= 1) {
+            return
+        }
+        setNumber(number => number - 1)
+    }
   
     // This function is an event listener which changes the sorting type of movies
     const changeMovies = (sortBy) => {
         setMovies([])
-        MovieDB.movies(1, sortBy).then(movies => setMovies(movies))
+        setNumber(1)
+        MovieDB.movies(number, sortBy).then(movies => setMovies(movies))
+        
     }
 
     // This function changes the colour of the sort by to allow the user to know which type the movie is sorted by
@@ -40,6 +55,15 @@ const Home = () => {
         setSortBy(newSortBy)
     }
 
+    const resetNumber = () => {
+        setNumber(number => {
+            number = 1
+            return (
+                number
+            )
+        })
+    }
+
     // This is the function which gets called when the componnent gets mounted
     // It calls a function from the MovieDB file 
     useEffect(() => {
@@ -51,6 +75,10 @@ const Home = () => {
     useEffect(() => {
         changeMovies(sortBy)
     }, [sortBy])
+
+    useEffect(() => {
+        MovieDB.movies(number, sortBy).then(movies => setMovies(movies))
+    },[number])
 
     // This function is responsible for laying out the sort by in order and setting the classname to active if the user has clicked on it
     const renderSorts = () => {
@@ -77,7 +105,12 @@ const Home = () => {
                 </div>
             </div>
             <MovieList movies={movies}/>
-            
+            <Pagination  
+            number={number} 
+            increment={incrementPage} 
+            decrement={decrementPage}
+            resetNumber={resetNumber}
+            />
         </>
     )
 }
