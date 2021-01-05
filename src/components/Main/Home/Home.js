@@ -12,6 +12,7 @@ const Home = () => {
     const [movies, setMovies] = useState([])
     const [sortBy, setSortBy] = useState('popular')
     const [number, setNumber] = useState(1)
+    const [lastPage, setLastPage] = useState(0)
 
     // This is an object used to reveal the different sorting types of movie
     const sortByOptions = {
@@ -64,10 +65,20 @@ const Home = () => {
         })
     }
 
+    const skipNumbers = () => {
+        setNumber(number => {
+            number = lastPage
+            return (
+                number
+            )
+        })
+    }
+
     // This is the function which gets called when the componnent gets mounted
     // It calls a function from the MovieDB file 
     useEffect(() => {
-        MovieDB.movies(1, 'popular').then(movies => setMovies(movies))
+        MovieDB.movies(number, 'popular').then(movies => setMovies(movies))
+        MovieDB.numberOfPages(number, 'popular').then(pages => setLastPage(pages))
       }, [])
 
     // This function gets called when the sortby gets changed
@@ -110,6 +121,7 @@ const Home = () => {
             increment={incrementPage} 
             decrement={decrementPage}
             resetNumber={resetNumber}
+            skip={skipNumbers}
             />
         </>
     )
