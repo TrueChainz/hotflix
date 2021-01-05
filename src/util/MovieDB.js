@@ -14,11 +14,18 @@ const MovieDB = {
                     id: movie.id,
                     title: movie.title,
                     image: `https://image.tmdb.org/t/p/original/${movie.poster_path}`,
-                    rating: movie.vote_average
+                    rating: movie.vote_average,
                 }
             }
         })
         return movieArray
+    },
+
+    numberOfPages: async (pageNumber, sortBy) => {
+        const baseURL = `https://api.themoviedb.org/3/movie/${sortBy}?api_key=${apiKey}&language=en-US&page=${pageNumber}`
+        const fetchURL = await fetch(baseURL)
+        const data = await fetchURL.json()
+        return data.total_pages
     },
     // getLists: async () => {
     //     const baseURL = `https://api.themoviedb.org/3/genre/movie/list?api_key=${apiKey}&language=en-US`
@@ -35,7 +42,6 @@ const MovieDB = {
     // },
     searchMovie: async (term, pageNumber) => {
         const baseURL = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&language=en-US&query=${term}&page=${pageNumber}&include_adult=false`
-        console.log(baseURL)
         const fetchURL = await fetch(baseURL)
         const data = await fetchURL.json()
         const movies = data.results.map(movie => {
