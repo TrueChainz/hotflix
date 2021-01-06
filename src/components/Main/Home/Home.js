@@ -77,14 +77,15 @@ const Home = () => {
     // This is the function which gets called when the componnent gets mounted
     // It calls a function from the MovieDB file 
     useEffect(() => {
-        MovieDB.movies(number, 'popular').then(movies => setMovies(movies))
-        MovieDB.numberOfPages(number, 'popular').then(pages => setLastPage(pages))
+        MovieDB.movies(number, sortBy).then(movies => setMovies(movies))
+        MovieDB.numberOfPages(number, sortBy).then(pages => setLastPage(pages))
       }, [])
 
     // This function gets called when the sortby gets changed
     // Changes the list of movies you according to the filter
     useEffect(() => {
         changeMovies(sortBy)
+        MovieDB.numberOfPages(number, sortBy).then(pages => setLastPage(pages))
     }, [sortBy])
 
     useEffect(() => {
