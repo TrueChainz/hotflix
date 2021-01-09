@@ -40,12 +40,12 @@
 }
 
 .info-section {
-    font-size: 16px;
     padding-left: 20px;
     height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+    font-size: 16px;
 }
 
 .info-title {
@@ -95,26 +95,38 @@
     }
 }
 
-@media screen and (max-width: 680px) {
+@media screen and (max-width:840px) {
     .MovieInfo {
-        width: 380px;
-        height: fit-content;
-        font-size: 14px;
+        height: 500px;
+        min-width: 200px;
+        font-size: 16px;
     }
     .movie-info {
         display: flex;
         flex-direction: column;
-        height: 100%;
+        overflow-y: scroll;
+        font-size: 10px;
+
     }
 
     .movie-info img {
-        max-height: 300px;
+        /* width: 80%; */
+        /* position: relative;
+        left: 10%;
+        padding: 0 auto; */
     }
 
     .info-section {
-        margin-top: 5px
+        margin-top: 5px;
+        margin-bottom: 2px
     }
     .info-section div {
         margin: 3px 0;
+    }
+}
+
+@media screen and (max-width: 680px) {
+    .MovieInfo {
+        max-width: 80%;
     }
 }
