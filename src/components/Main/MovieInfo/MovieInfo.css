@@ -40,12 +40,10 @@
 }
 
 .info-section {
-    padding-left: 20px;
-    height: 100%;
+    padding: 10px 20px;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    font-size: 16px;
 }
 
 .info-title {
