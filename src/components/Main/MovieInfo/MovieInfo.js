@@ -5,6 +5,7 @@ import { MovieDB } from '../../../util/MovieDB'
 const MovieInfo = ({id, closeDisplay}) => {
     const [movieDetails, setMovieDetails] = useState([])
 
+    // Loads the movie details upon mounting
     useEffect(() => {
         MovieDB.movieDetail(id).then(details => setMovieDetails(details))
     },[])
