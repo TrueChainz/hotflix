@@ -2,7 +2,7 @@ import React from 'react'
 import './Pagination.css'
 import '../../util/MovieDB'
 
-const Pagination = ({decrement, increment, number, resetNumber, skip}) => {
+const Pagination = ({decrement, increment, number, resetNumber, skip, last}) => {
 
     return (
         <div className="Whole">
@@ -14,7 +14,7 @@ const Pagination = ({decrement, increment, number, resetNumber, skip}) => {
                     <div className='arrow' onClick={decrement}> {`<`} </div>
                     <div className='number'>{number}</div>
                     <div className='arrow' onClick={increment}>{`>`}</div>
-                    <div className='arrow_two' onClick={skip}>{`>>`}</div>
+                    {last != number && <div className='arrow_two' onClick={skip}>{`>>`}</div>}
                 </div>
         </div>
     )
