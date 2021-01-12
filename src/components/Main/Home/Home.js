@@ -123,6 +123,7 @@ const Home = () => {
             decrement={decrementPage}
             resetNumber={resetNumber}
             skip={skipNumbers}
+            last={lastPage}
             />
         </>
     )
