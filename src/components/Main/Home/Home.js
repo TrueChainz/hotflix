@@ -22,6 +22,9 @@ const Home = () => {
     } 
 
     const incrementPage = () => {
+        if (lastPage === number) {
+            return
+        }
         setNumber(number => number +1)
     }
 
