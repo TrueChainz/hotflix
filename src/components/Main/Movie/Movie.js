@@ -5,7 +5,6 @@ import MovieInfo from "../MovieInfo/MovieInfo"
 const Movie = ({ movie }) => {
     const [display, setDisplay] = useState(false)
 
-
     // This function is responsible for mounting the MovieInfo component
     // If the state is of the display is false then it changes the display state to true
     const getDisplay = () => {
@@ -21,8 +20,7 @@ const Movie = ({ movie }) => {
         setDisplay(false)
     }
 
-    return (
-        
+    return (  
         <>
             <div className="Movie" onClick={getDisplay}>
                 <img src={movie.image} alt='Movie image'/>
