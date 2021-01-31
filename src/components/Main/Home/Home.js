@@ -21,13 +21,15 @@ const Home = () => {
         'Upcoming': 'upcoming'
     } 
 
+    // This function is an event listener that adds the page number by one
     const incrementPage = () => {
         if (lastPage === number) {
             return
         }
-        setNumber(number => number +1)
+        setNumber(number => number + 1)
     }
 
+    // This function is an event listener that subtracts the page number by one
     const decrementPage = () => {
         if (number <= 1) {
             return
@@ -52,6 +54,7 @@ const Home = () => {
         }
     }
 
+    // This function is an event listener that changes the sortBy state if needed
     const changeSortBy = newSortBy => {
         if (newSortBy === sortBy) {
             return
@@ -59,6 +62,7 @@ const Home = () => {
         setSortBy(newSortBy)
     }
 
+    // This function resets the pageNumber to 1
     const resetNumber = () => {
         setNumber(number => {
             number = 1
@@ -68,6 +72,7 @@ const Home = () => {
         })
     }
 
+    // This function allows you to skip to the last page
     const skipNumbers = () => {
         setNumber(number => {
             number = lastPage
