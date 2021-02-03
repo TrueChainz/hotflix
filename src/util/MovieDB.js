@@ -27,19 +27,6 @@ const MovieDB = {
         const data = await fetchURL.json()
         return data.total_pages
     },
-    // getLists: async () => {
-    //     const baseURL = `https://api.themoviedb.org/3/genre/movie/list?api_key=${apiKey}&language=en-US`
-    //     const fetchURL = await fetch(baseURL)
-    //     const data = await fetchURL.json()
-    //     const genres = await data.genres
-    //     const genresArray = genres.map(genre => {
-    //         return {
-    //             id: genre.id,
-    //             name: genre.name
-    //         }
-    //     })
-    //     return genresArray
-    // },
     searchMovie: async (term, pageNumber) => {
         const baseURL = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&language=en-US&query=${term}&page=${pageNumber}&include_adult=false`
         const fetchURL = await fetch(baseURL)
