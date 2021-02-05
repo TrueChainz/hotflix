@@ -5,11 +5,13 @@ import './Nav.css'
 const Nav = () => {
 
     const [navActive, setNavActive] = useState('')
-
+    
+    // This function resets the class of the Navbar
     const resetNav = () => {
         setNavActive('')
     }
 
+    // This event handler toggles the navActive state
     const navToggle = (e) => {
         e.target.classList.toggle('toggle')
         if (navActive === '') {
