@@ -2,11 +2,14 @@ import React, { useState, useEffect } from 'react'
 import './Catalog.css'
 import { MovieDB } from '../../../util/MovieDB'
 import MovieList from '../MovieList/MovieList'
+import { useSelector } from 'react-redux'
+import Pagination from '../../Pagination/Pagination'
 
 const Catalog = () => {
 
+    const pageNumber = useSelector(state => state.pageNum)
     const [term, setTerm] = useState('')
-    const [pageNumber, setPageNumber] = useState(1)
+    // const [pageNumber, setPageNumber] = useState(1)
     const [border, setBorder] = useState('')
     const [movies, setMovies] = useState([])
 
@@ -59,6 +62,7 @@ const Catalog = () => {
             </main>
             <MovieList movies={movies}/>
             <div style={placeholder}></div>
+            {/* <Pagination /> */}
         </>
     )
 }
