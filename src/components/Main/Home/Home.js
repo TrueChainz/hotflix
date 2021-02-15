@@ -1,17 +1,21 @@
 import React, { useState, useEffect } from 'react'
+import { useDispatch, useSelector} from 'react-redux'
 import './Home.css'
 import { MovieDB } from '../../../util/MovieDB'
 
 import MovieList from '../MovieList/MovieList'
 import Pagination from '../../Pagination/Pagination'
+import { resetPage } from '../../../actions'
 
 
 
 const Home = () => {
+    const dispatch = useDispatch()
+    const pageNumber = useSelector(state => state.pageNum)
     // The states that stores the current lists of movie results
     const [movies, setMovies] = useState([])
     const [sortBy, setSortBy] = useState('popular')
-    const [number, setNumber] = useState(1)
+    // const [number, setNumber] = useState(1)
     const [lastPage, setLastPage] = useState(0)
 
     // This is an object used to reveal the different sorting types of movie
@@ -21,27 +25,11 @@ const Home = () => {
         'Upcoming': 'upcoming'
     } 
 
-    // This function is an event listener that adds the page number by one
-    const incrementPage = () => {
-        if (lastPage === number) {
-            return
-        }
-        setNumber(number => number + 1)
-    }
-
-    // This function is an event listener that subtracts the page number by one
-    const decrementPage = () => {
-        if (number <= 1) {
-            return
-        }
-        setNumber(number => number - 1)
-    }
-  
     // This function is an event listener which changes the sorting type of movies
     const changeMovies = (sortBy) => {
         setMovies([])
-        setNumber(1)
-        MovieDB.movies(number, sortBy).then(movies => setMovies(movies))
+        dispatch(resetPage())
+        MovieDB.movies(pageNumber, sortBy).then(movies => setMovies(movies))
         
     }
 
@@ -62,36 +50,16 @@ const Home = () => {
         setSortBy(newSortBy)
     }
 
-    // This function resets the pageNumber to 1
-    const resetNumber = () => {
-        setNumber(number => {
-            number = 1
-            return (
-                number
-            )
-        })
-    }
-
-    // This function allows you to skip to the last page
-    const skipNumbers = () => {
-        setNumber(number => {
-            number = lastPage
-            return (
-                number
-            )
-        })
-    }
-
     // This function gets called when the sortby gets changed
     // Changes the list of movies you according to the filter
     useEffect(() => {
         changeMovies(sortBy)
-        MovieDB.numberOfPages(number, sortBy).then(pages => setLastPage(pages))
+        MovieDB.numberOfPages(pageNumber, sortBy).then(pages => setLastPage(pages))
     }, [sortBy])
 
     useEffect(() => {
-        MovieDB.movies(number, sortBy).then(movies => setMovies(movies))
-    },[number])
+        MovieDB.movies(pageNumber, sortBy).then(movies => setMovies(movies))
+    },[pageNumber])
 
     // This function is responsible for laying out the sort by in order and setting the classname to active if the user has clicked on it
     const renderSorts = () => {
@@ -104,8 +72,8 @@ const Home = () => {
     // This is the function which gets called when the componnent gets mounted
     // It calls a function from the MovieDB file 
     useEffect(() => {
-        MovieDB.movies(number, sortBy).then(movies => setMovies(movies))
-        MovieDB.numberOfPages(number, sortBy).then(pages => setLastPage(pages))
+        MovieDB.movies(pageNumber, sortBy).then(movies => setMovies(movies))
+        MovieDB.numberOfPages(pageNumber, sortBy).then(pages => setLastPage(pages))
       }, [])
 
     return (
@@ -126,11 +94,7 @@ const Home = () => {
             </div>
             <MovieList movies={movies}/>
             <Pagination  
-            number={number} 
-            increment={incrementPage} 
-            decrement={decrementPage}
-            resetNumber={resetNumber}
-            skip={skipNumbers}
+            number={pageNumber} 
             last={lastPage}
             />
         </>
