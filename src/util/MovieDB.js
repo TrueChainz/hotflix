@@ -7,15 +7,11 @@ const MovieDB = {
         const data = await fetchURL.json()
         const movies = await data.results
         const movieArray = await movies.map(movie => {
-            if (movie.adult == true) {
-                return
-            } else {
-                return {
-                    id: movie.id,
-                    title: movie.title,
-                    image: `https://image.tmdb.org/t/p/original/${movie.poster_path}`,
-                    rating: movie.vote_average,
-                }
+            return {
+                id: movie.id,
+                title: movie.title,
+                image: `https://image.tmdb.org/t/p/original/${movie.poster_path}`,
+                rating: movie.vote_average,
             }
         })
         return movieArray
@@ -41,6 +37,12 @@ const MovieDB = {
         })
         return movies
     },
+    numberOfSearchPages: async (term, pageNumber) => {
+        const baseURL = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&language=en-US&query=${term}&page=${pageNumber}&include_adult=false`
+        const fetchURL = await fetch(baseURL)
+        const data = await fetchURL.json()
+        return data.total_pages
+    }, 
     movieDetail: async (id) => {
         const baseURL = `https://api.themoviedb.org/3/movie/${id}?api_key=${apiKey}&language=en-US`
         return fetch(baseURL)
