@@ -28,6 +28,7 @@ const Catalog = () => {
             return
         }
         MovieDB.searchMovie(term, pageNumber).then(list => setMovies(list))
+        MovieDB.numberOfSearchPages(term, pageNumber).then(num => setTotalPage(num))
     }
 
     const keypressFunction = e => {
@@ -47,6 +48,12 @@ const Catalog = () => {
         }
         
     },[term])
+
+    useEffect(() => {
+        if (term.length > 0) {
+            MovieDB.searchMovie(term, pageNumber).then(list => setMovies(list))
+        }
+    }, [pageNumber])
 
     return (
         <>
@@ -70,7 +77,7 @@ const Catalog = () => {
             </main>
             <MovieList movies={movies}/>
             <div style={placeholder}></div>
-            {totalPage > 0 && <Pagination />}
+            {totalPage > 0 && <Pagination number={pageNumber} last={totalPage}/>}
         </>
     )
 }
