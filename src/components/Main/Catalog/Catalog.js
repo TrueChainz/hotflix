@@ -12,6 +12,7 @@ const Catalog = () => {
     // const [pageNumber, setPageNumber] = useState(1)
     const [border, setBorder] = useState('')
     const [movies, setMovies] = useState([])
+    const [totalPage, setTotalPage] = useState(0)
 
     const searchBoxStyle = {
         border: border
@@ -27,6 +28,13 @@ const Catalog = () => {
             return
         }
         MovieDB.searchMovie(term, pageNumber).then(list => setMovies(list))
+    }
+
+    const keypressFunction = e => {
+        console.log(e)
+        if (e.key === 'Enter') {
+            searchMovie(term, pageNumber)
+        }
     }
 
     useEffect(() => {
@@ -51,7 +59,7 @@ const Catalog = () => {
             <main className='sort'>
                 <div className="container">
                     <div className='catalog-sort'>
-                        <div className='search-field' style={searchBoxStyle}>
+                        <div className='search-field' style={searchBoxStyle} onKeyPress={keypressFunction}>
                             <input type="text" placeholder='Search movies...' value={term} onChange={changeTerm}/>
                             <button onClick={searchMovie.bind(this, term, pageNumber)} className='search-button'>
                                 <ion-icon name="search-outline"></ion-icon>
@@ -62,7 +70,7 @@ const Catalog = () => {
             </main>
             <MovieList movies={movies}/>
             <div style={placeholder}></div>
-            {/* <Pagination /> */}
+            {totalPage > 0 && <Pagination />}
         </>
     )
 }
