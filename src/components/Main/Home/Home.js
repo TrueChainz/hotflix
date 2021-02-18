@@ -15,7 +15,6 @@ const Home = () => {
     // The states that stores the current lists of movie results
     const [movies, setMovies] = useState([])
     const [sortBy, setSortBy] = useState('popular')
-    // const [number, setNumber] = useState(1)
     const [lastPage, setLastPage] = useState(0)
 
     // This is an object used to reveal the different sorting types of movie
@@ -83,7 +82,6 @@ const Home = () => {
                 <div className="container" style={homeTitleStyle}>
                     <h1 className='home-title'>Home</h1>
                 </div>
-                {/* <MovieList /> */}
             </div>
             <div className='home-sort'>
                 <div className='container'>

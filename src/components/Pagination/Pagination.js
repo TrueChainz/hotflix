@@ -4,15 +4,11 @@ import '../../util/MovieDB'
 import { useDispatch} from 'react-redux'
 import { decrementPage, incrementPage, skipPageBack, skipPageForward } from '../../actions'
 
-
 const Pagination = ({last, number}) => {
     const dispatch = useDispatch();
 
     return (
         <div className="Whole">
-                {/* <div className= 'Pagination'>
-                    {arrray.map(square =>  <div className='square'></div>)}
-                </div> */}
                 <div className='Pagination'>
                     { number > 1 && <div className='arrow_two' onClick={() => dispatch(skipPageBack())}> {`<<`} </div>}
                     <div className='arrow' onClick={() => dispatch(decrementPage())}> {`<`} </div>
