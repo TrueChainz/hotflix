@@ -1,7 +1,7 @@
 .Catalog {
     margin-top: 90px;
     min-height: 150px;
-    min-width: 100%;
+    /* min-width: 100%; */
     background: url(../../../img/movieseat.jpg) center center / cover no-repeat;
 }
 

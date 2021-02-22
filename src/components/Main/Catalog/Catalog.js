@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import './Catalog.css'
+import {titleStyle} from '../../../style'
 import { MovieDB } from '../../../util/MovieDB'
 import MovieList from '../MovieList/MovieList'
 import { useSelector } from 'react-redux'
@@ -58,11 +59,11 @@ const Catalog = () => {
         <>
             <div className='darken' />
             <div className='Catalog'>
-                <div className="container" style={catalogTitleStyle}>
+                <div className="container" style={titleStyle}>
                     <h1 className="home-title">Catalog</h1>
                 </div>
             </div>
-            <main className='sort'>
+            <div className='sort'>
                 <div className="container">
                     <div className='catalog-sort'>
                         <div className='search-field' style={searchBoxStyle} onKeyPress={keypressFunction}>
@@ -73,26 +74,21 @@ const Catalog = () => {
                         </div>
                     </div>
                 </div>
-            </main>
+            </div>
             <MovieList movies={movies}/>
-            <div style={placeholder}></div>
+            {/* <div style={placeholder}></div> */}
             {totalPage > 0 && <Pagination number={pageNumber} last={totalPage}/>}
         </>
     )
 }
 
-const catalogTitleStyle = {
-    display: 'flex',
-    alignItems: 'center',
-    minHeight: 150
-}
+
 
 const placeholder = {
     backgroundColor: '#1a191f',
     position: 'absolute',
     top: '0px',
     zIndex: '-1',
-    width: '100vw',
     height: '100vh',
 }
 

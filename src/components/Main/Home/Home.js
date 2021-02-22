@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector} from 'react-redux'
 import './Home.css'
+import {titleStyle} from '../../../style'
 import { MovieDB } from '../../../util/MovieDB'
 
 import MovieList from '../MovieList/MovieList'
@@ -79,7 +80,7 @@ const Home = () => {
         <>
             <div className='darken' />
             <div className='Home'>
-                <div className="container" style={homeTitleStyle}>
+                <div className="container" style={titleStyle}>
                     <h1 className='home-title'>Home</h1>
                 </div>
             </div>
@@ -98,14 +99,5 @@ const Home = () => {
         </>
     )
 }
-
-
-// Using styled component for the home component
-const homeTitleStyle = {
-    display: 'flex',
-    alignItems: 'center',
-    minHeight: 150
-}
-
 
 export default Home
