@@ -9,13 +9,12 @@ const Catalog = () => {
 
     const pageNumber = useSelector(state => state.pageNum)
     const [term, setTerm] = useState('')
-    // const [pageNumber, setPageNumber] = useState(1)
     const [border, setBorder] = useState('')
     const [movies, setMovies] = useState([])
     const [totalPage, setTotalPage] = useState(0)
 
     const searchBoxStyle = {
-        border: border
+        border
     }
 
     const changeTerm = e => {
