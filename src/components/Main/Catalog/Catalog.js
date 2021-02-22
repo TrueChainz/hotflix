@@ -76,20 +76,9 @@ const Catalog = () => {
                 </div>
             </div>
             <MovieList movies={movies}/>
-            {/* <div style={placeholder}></div> */}
             {totalPage > 0 && <Pagination number={pageNumber} last={totalPage}/>}
         </>
     )
-}
-
-
-
-const placeholder = {
-    backgroundColor: '#1a191f',
-    position: 'absolute',
-    top: '0px',
-    zIndex: '-1',
-    height: '100vh',
 }
 
 export default Catalog
