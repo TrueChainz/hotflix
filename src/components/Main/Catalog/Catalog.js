@@ -6,7 +6,9 @@ import MovieList from '../MovieList/MovieList'
 import { useSelector } from 'react-redux'
 import Pagination from '../../Pagination/Pagination'
 
-const Catalog = () => {
+const Catalog = (props) => {
+
+    console.log(props)
 
     const pageNumber = useSelector(state => state.pageNum)
     const [term, setTerm] = useState('')
@@ -14,9 +16,9 @@ const Catalog = () => {
     const [movies, setMovies] = useState([])
     const [totalPage, setTotalPage] = useState(0)
 
-    const searchBoxStyle = {
-        border
-    }
+    // const searchBoxStyle = {
+    //     border
+    // }
 
     const changeTerm = e => {
         setTerm(e.target.value)
@@ -54,6 +56,10 @@ const Catalog = () => {
             MovieDB.searchMovie(term, pageNumber).then(list => setMovies(list))
         }
     }, [pageNumber])
+
+    useEffect(() => {
+        document.title = props.title
+    })
 
     return (
         <>
