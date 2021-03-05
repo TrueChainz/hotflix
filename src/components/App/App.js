@@ -11,8 +11,17 @@ const App = () => {
       <Router>
         <Nav />
         <Switch>
-          <Route path="/" exact component={Home}/>
-          <Route path="/catalog" exact component={Catalog}/>
+          <Route path="/" exact 
+          render= {props => (
+            <Home title="Home Page"/>
+          )
+
+          }/>
+          <Route 
+          path="/catalog" exact 
+          render={props => (
+            <Catalog title="Catalog Page" {...props}/>
+          )}/>
         </Switch>
       </Router>
     </div>
