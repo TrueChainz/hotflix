@@ -33,7 +33,8 @@ const Nav = () => {
                     </Link>
                     <Link style={linkStyle} to='/catalog'>
                     <div onClick={resetNav}>Catalog</div>
-                    </Link>                  
+                    </Link>
+                    <div onClick={resetNav}>Login</div>                  
                 </div>
                 <div onClick={navToggle} className="burger">
                     <div className="line1"></div>
