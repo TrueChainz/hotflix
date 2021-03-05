@@ -10,7 +10,7 @@ import { resetPage } from '../../../actions'
 
 
 
-const Home = () => {
+const Home = (props) => {
     const dispatch = useDispatch()
     const pageNumber = useSelector(state => state.pageNum)
     // The states that stores the current lists of movie results
@@ -74,6 +74,7 @@ const Home = () => {
     useEffect(() => {
         MovieDB.movies(pageNumber, sortBy).then(movies => setMovies(movies))
         MovieDB.numberOfPages(pageNumber, sortBy).then(pages => setLastPage(pages))
+        document.title = props.title
       }, [])
 
     return (
