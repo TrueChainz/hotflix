@@ -23,7 +23,7 @@ const Movie = ({ movie }) => {
     return (  
         <>
             <div className="Movie" onClick={getDisplay}>
-                <img src={movie.image} alt='Movie image'/>
+                <img src={movie.image} alt='Movie Image' title={movie.title}/>
                 <div className='title'>{movie.title}</div>
                 {movie.rating >= 8 ? <div className='rating green'>{movie.rating}</div> : <div className='rating amber'>{movie.rating}</div>}
                 {/* <img src={}></img> */}

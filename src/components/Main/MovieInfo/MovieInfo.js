@@ -9,6 +9,8 @@ const MovieInfo = ({id, closeDisplay}) => {
     useEffect(() => {
         MovieDB.movieDetail(id).then(details => setMovieDetails(details))
     },[])
+
+
     return (
         <>
             <div className='MovieInfo'>
@@ -21,7 +23,7 @@ const MovieInfo = ({id, closeDisplay}) => {
                 </header>
                 <div className='movie-info'>
 
-                    <img src={movieDetails.image} alt={movieDetails.backup}/>
+                    <img src={movieDetails.image} alt="Movie Cover Photo" title={movieDetails.title}/>
 
                     <section className='info-section'>
 
