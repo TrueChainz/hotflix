@@ -8,17 +8,15 @@ import Pagination from '../../Pagination/Pagination'
 
 const Catalog = (props) => {
 
-    console.log(props)
-
     const pageNumber = useSelector(state => state.pageNum)
     const [term, setTerm] = useState('')
     const [border, setBorder] = useState('')
     const [movies, setMovies] = useState([])
     const [totalPage, setTotalPage] = useState(0)
 
-    // const searchBoxStyle = {
-    //     border
-    // }
+    const searchBoxStyle = {
+        border
+    }
 
     const changeTerm = e => {
         setTerm(e.target.value)
@@ -34,7 +32,6 @@ const Catalog = (props) => {
     }
 
     const keypressFunction = e => {
-        console.log(e)
         if (e.key === 'Enter') {
             searchMovie(term, pageNumber)
         }
@@ -43,9 +40,7 @@ const Catalog = (props) => {
     useEffect(() => {
         if (term.length === 0) {
             setBorder('')
-            console.log(term.length)
         } else {
-            console.log(term.length)
             setBorder('1px solid yellow')
         }
         
