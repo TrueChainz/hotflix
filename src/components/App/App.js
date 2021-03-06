@@ -1,26 +1,26 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import './App.css';
-import Nav from '../Nav/Nav'
-import Home from '../Main/Home/Home'
-import Catalog from '../Main/Catalog/Catalog';
+import Nav from '../Main/Nav/Nav'
+import Home from '../Pages/Home/Home'
+import Catalog from '../Pages/Catalog/Catalog';
+import Pagination from '../Main/Pagination/Pagination';
 
 const App = () => {
   return (
     <div className="App">
       <Router>
-        {/* <Nav /> */}
         <Switch>
           <Route path="/" exact 
           render= {props => (
-            <Home title="Home Page" component={Nav} {...props}/>
+            <Home title="Home Page" components={[Nav, Pagination]} {...props}/>
           )
 
           }/>
           <Route 
           path="/catalog" exact 
           render={props => (
-            <Catalog title="Catalog Page" component={Nav} {...props}/>
+            <Catalog title="Catalog Page" components={[Nav, Pagination]} {...props}/>
           )}/>
         </Switch>
       </Router>
