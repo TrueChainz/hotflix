@@ -9,18 +9,18 @@ const App = () => {
   return (
     <div className="App">
       <Router>
-        <Nav />
+        {/* <Nav /> */}
         <Switch>
           <Route path="/" exact 
           render= {props => (
-            <Home title="Home Page"/>
+            <Home title="Home Page" component={Nav} {...props}/>
           )
 
           }/>
           <Route 
           path="/catalog" exact 
           render={props => (
-            <Catalog title="Catalog Page" {...props}/>
+            <Catalog title="Catalog Page" component={Nav} {...props}/>
           )}/>
         </Switch>
       </Router>
