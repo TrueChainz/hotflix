@@ -18,6 +18,8 @@ const Home = (props) => {
     const [sortBy, setSortBy] = useState('popular')
     const [lastPage, setLastPage] = useState(0)
 
+    const NavComponent = props.component
+
     // This is an object used to reveal the different sorting types of movie
     const sortByOptions = {
         'Popular': 'popular',
@@ -79,6 +81,7 @@ const Home = (props) => {
 
     return (
         <>
+            <NavComponent/>
             <div className='darken' />
             <div className='Home'>
                 <div className="container" style={titleStyle}>

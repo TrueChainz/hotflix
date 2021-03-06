@@ -14,6 +14,8 @@ const Catalog = (props) => {
     const [movies, setMovies] = useState([])
     const [totalPage, setTotalPage] = useState(0)
 
+    const NavComponent = props.component
+
     const searchBoxStyle = {
         border
     }
@@ -58,6 +60,7 @@ const Catalog = (props) => {
 
     return (
         <>
+            <NavComponent />
             <div className='darken' />
             <div className='Catalog'>
                 <div className="container" style={titleStyle}>
