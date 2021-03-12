@@ -1,7 +1,7 @@
-import React from 'react'
+import React, { memo } from 'react'
 import Movie from '../Movie/Movie'
 
-const MovieList = ({ movies }) => {
+const MovieList = memo(({ movies }) => {
     return (
         <div className='MovieList' style={mainMovieList}>
             <div className='container' style={movieLists}>
@@ -9,7 +9,7 @@ const MovieList = ({ movies }) => {
             </div>
         </div>
     )
-}
+})
 
 const mainMovieList = {
     backgroundColor: '#1a191f'
