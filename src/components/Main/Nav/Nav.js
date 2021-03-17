@@ -29,10 +29,10 @@ const Nav = () => {
                 </Link>
                 <div id={navActive} className="nav-bar">
                     <Link style={linkStyle} to='/'>
-                    <div onClick={resetNav}>Home</div>
+                        <div onClick={resetNav}>Home</div>
                     </Link>
                     <Link style={linkStyle} to='/catalog'>
-                    <div onClick={resetNav}>Catalog</div>
+                        <div onClick={resetNav}>Catalog</div>
                     </Link>
                     <div onClick={resetNav}>Login</div>                  
                 </div>
