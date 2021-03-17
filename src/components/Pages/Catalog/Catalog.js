@@ -13,8 +13,8 @@ const Catalog = (props) => {
     const [movies, setMovies] = useState([])
     const [totalPage, setTotalPage] = useState(0)
 
-    const NavComponent = props.component[0]
-    const PaginationComponent = props.component[1]
+    const NavComponent = props.components[0]
+    const PaginationComponent = props.components[1]
 
     const searchBoxStyle = {
         border
