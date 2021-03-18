@@ -13,11 +13,12 @@ const Nav = () => {
 
     // This event handler toggles the navActive state
     const navToggle = (e) => {
-        e.target.classList.toggle('toggle')
         if (navActive === '') {
             setNavActive('nav-active')
+            e.target.classList.add('toggle')
         } else {
             setNavActive('')
+            e.target.classList.remove('toggle')
         }
     }
 
@@ -34,7 +35,7 @@ const Nav = () => {
                     <Link style={linkStyle} to='/catalog'>
                         <div onClick={resetNav}>Catalog</div>
                     </Link>
-                    <div onClick={resetNav}>Login</div>                  
+                    {/* <div onClick={resetNav}>Login</div>                   */}
                 </div>
                 <div onClick={navToggle} className="burger">
                     <div className="line1"></div>
