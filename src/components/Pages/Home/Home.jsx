@@ -27,43 +27,23 @@ const Home = (props) => {
         'Upcoming': 'upcoming'
     } 
 
-    // This function is an event listener which changes the sorting type of movies
-    const changeMovies = (sortBy) => {
-        setMovies([])
-        dispatch(resetPage())
-        MovieDB.movies(pageNumber, sortBy).then(movies => setMovies(movies))
-        
-    }
+    const changeClassName = sortByOption => sortByOption === sortBy ? 'active' : ''
 
-    // This function changes the colour of the sort by to allow the user to know which type the movie is sorted by
-    const changeClassName = sortByOption => {
-        if (sortByOption === sortBy) {
-            return 'active'
-        } else {
-            return ''
-        }
-    }
-
-    // This function is an event listener that changes the sortBy state if needed
     const changeSortBy = newSortBy => {
-        if (newSortBy === sortBy) {
-            return
-        }
+        if (newSortBy === sortBy) return
+        dispatch(resetPage())
         setSortBy(newSortBy)
     }
 
-    // This function gets called when the sortby gets changed
-    // Changes the list of movies you according to the filter
-    useEffect(() => {
-        changeMovies(sortBy)
-        MovieDB.numberOfPages(pageNumber, sortBy).then(pages => setLastPage(pages))
-    }, [sortBy])
-
     useEffect(() => {
         MovieDB.movies(pageNumber, sortBy).then(movies => setMovies(movies))
-    },[pageNumber])
+        MovieDB.numberOfPages(pageNumber, sortBy).then(pages => setLastPage(pages))
+    }, [pageNumber, sortBy])
 
-    // This function is responsible for laying out the sort by in order and setting the classname to active if the user has clicked on it
+    useEffect(() => {
+        document.title = props.title
+    }, [])
+
     const renderSorts = () => {
         return Object.keys(sortByOptions).map(sortBy => {
             let sortByOptionValue = sortByOptions[sortBy]
@@ -71,21 +51,16 @@ const Home = (props) => {
         })
     }
 
-    // This is the function which gets called when the componnent gets mounted
-    // It calls a function from the MovieDB file 
-    useEffect(() => {
-        MovieDB.movies(pageNumber, sortBy).then(movies => setMovies(movies))
-        MovieDB.numberOfPages(pageNumber, sortBy).then(pages => setLastPage(pages))
-        document.title = props.title
-      }, [])
-
     return (
         <>
             <NavComponent/>
             <div className='darken' />
             <div className='Home'>
                 <div className="container" style={titleStyle}>
-                    <h1 className='home-title'>Home</h1>
+                    <div>
+                        <h1 className='home-title'>Discover Movies</h1>
+                        <p className='home-subtitle'>Browse the latest and greatest films</p>
+                    </div>
                 </div>
             </div>
             <div className='home-sort'>

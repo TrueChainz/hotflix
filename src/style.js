@@ -1,7 +1,10 @@
 const titleStyle = {
     display: 'flex',
-    alignItems: 'center',
-    minHeight: 150
+    alignItems: 'flex-end',
+    minHeight: 280,
+    paddingBottom: 28,
+    position: 'relative',
+    zIndex: 1,
 }
-  
+
 export {titleStyle}

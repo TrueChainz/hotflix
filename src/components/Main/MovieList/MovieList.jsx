@@ -12,15 +12,15 @@ const MovieList = memo(({ movies }) => {
 })
 
 const mainMovieList = {
-    backgroundColor: '#1a191f'
+    backgroundColor: '#0a0a0f'
 }
 
 const movieLists = {
     display: 'flex',
     flexWrap: 'wrap',
-    paddingTop: 30,
+    paddingTop: 24,
     width: '100%',
-    paddingBottom: 30
+    paddingBottom: 24
 }
 
 export default MovieList

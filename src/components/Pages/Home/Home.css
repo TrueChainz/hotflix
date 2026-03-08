@@ -1,51 +1,86 @@
 .Home {
-    margin-top: 90px;
+    margin-top: 68px;
     min-width: 100%;
-    border-bottom: 1px solid rgba(0,0,0,0.5);
-    background: url(../../../img/movieseat.jpg) center center / cover no-repeat;
+    background: url(../../../img/movieseat.jpg) center 30% / cover no-repeat;
+    position: relative;
+    min-height: 300px;
 }
 
 .darken {
-    width: 100%;
-    background-color: rgba(0,0,0,0.6);
-    min-height: 150px;
     position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        180deg,
+        rgba(10, 10, 15, 0.55) 0%,
+        rgba(10, 10, 15, 0.2) 40%,
+        rgba(10, 10, 15, 0.85) 100%
+    );
     z-index: 0;
+    min-height: 300px;
+    width: 100%;
+    pointer-events: none;
 }
 
 .home-title {
-    color: rgb(158, 158, 158);
-    font-size: 2.7rem;
-    position: absolute;
+    color: #ffffff;
+    font-size: 3rem;
+    font-weight: 800;
+    letter-spacing: -1px;
+    position: relative;
     z-index: 1;
+    margin: 0 0 6px;
+    text-shadow: 0 2px 20px rgba(0, 0, 0, 0.6);
+}
+
+.home-subtitle {
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.55);
+    font-weight: 400;
+    position: relative;
+    z-index: 1;
+    margin: 0;
+}
+
+/* Sort chips */
+.home-sort {
+    background-color: #0a0a0f;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.home-lists {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    list-style: none;
+    padding: 14px 0;
+    margin: 0;
+}
+
+.home-lists li {
+    cursor: pointer;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: #6b6b6b;
+    padding: 6px 16px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background-color: rgba(255, 255, 255, 0.04);
+    transition: color 0.2s, background-color 0.2s, border-color 0.2s;
+    letter-spacing: 0.01em;
+}
+
+.home-lists li:hover {
+    color: #e8e8e8;
+    background-color: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.15);
 }
 
 .home-lists li.active,
 .home-lists li.active:hover {
-    color: rgb(255, 220, 46);
-    border-bottom: 2.5px solid rgb(255, 220, 46);
-}
-.home-lists li:hover {
-    color: rgb(255, 220, 46);
-}
-
-.home-lists {
-    margin-bottom: 0px;
-    margin-top: auto;
-}
-
-.home-lists li {
-    display: inline-block;
-    cursor: pointer;
-    text-transform: uppercase;
-    font-size: 1.1rem;
-    color: rgb(190, 190, 190);
-    margin-right: 25px;
-    padding-bottom: 10px; 
-}
-
-.home-sort {
-    background-color: #1a191f;
-    padding-top: 15px;
-    border-bottom: 0.5px solid rgb(66, 66, 66);
+    color: #f5c518;
+    background-color: rgba(245, 197, 24, 0.12);
+    border-color: rgba(245, 197, 24, 0.4);
 }

@@ -1,17 +1,13 @@
 import React, { useState } from 'react'
-import {Link} from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import './Nav.css'
 
 const Nav = () => {
-
     const [navActive, setNavActive] = useState('')
-    
-    // This function resets the class of the Navbar
-    const resetNav = () => {
-        setNavActive('')
-    }
+    const { pathname } = useLocation()
 
-    // This event handler toggles the navActive state
+    const resetNav = () => setNavActive('')
+
     const navToggle = (e) => {
         if (navActive === '') {
             setNavActive('nav-active')
@@ -26,16 +22,15 @@ const Nav = () => {
         <div className="Nav">
             <div className="container" style={navStyle}>
                 <Link style={linkStyle} to='/'>
-                <div className="logo"><span className="highlight">HOT</span>FLIX</div>
+                    <div className="logo"><span className="highlight">HOT</span>FLIX</div>
                 </Link>
                 <div id={navActive} className="nav-bar">
                     <Link style={linkStyle} to='/'>
-                        <div onClick={resetNav}>Home</div>
+                        <div onClick={resetNav} className={`nav-link${pathname === '/' ? ' active-link' : ''}`}>Home</div>
                     </Link>
                     <Link style={linkStyle} to='/catalog'>
-                        <div onClick={resetNav}>Catalog</div>
+                        <div onClick={resetNav} className={`nav-link${pathname === '/catalog' ? ' active-link' : ''}`}>Catalog</div>
                     </Link>
-                    {/* <div onClick={resetNav}>Login</div>                   */}
                 </div>
                 <div onClick={navToggle} className="burger">
                     <div className="line1"></div>
@@ -48,16 +43,14 @@ const Nav = () => {
 }
 
 const linkStyle = {
-    color: 'rgb(150, 150, 150)',
+    color: 'inherit',
     textDecoration: 'none',
-    fontSize: '0.9rem'
 }
 
 const navStyle = {
     display: 'flex',
-    margin: 'auto',
-    // minHeight: '100%',
     alignItems: 'center',
+    height: '100%',
 }
 
 export default Nav

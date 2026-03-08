@@ -9,16 +9,11 @@ const Catalog = (props) => {
 
     const pageNumber = useSelector(state => state.pageNum)
     const [term, setTerm] = useState('')
-    const [border, setBorder] = useState('')
     const [movies, setMovies] = useState([])
     const [totalPage, setTotalPage] = useState(0)
 
     const NavComponent = props.components[0]
     const PaginationComponent = props.components[1]
-
-    const searchBoxStyle = {
-        border
-    }
 
     const changeTerm = e => {
         setTerm(e.target.value)
@@ -40,15 +35,6 @@ const Catalog = (props) => {
     }
 
     useEffect(() => {
-        if (term.length === 0) {
-            setBorder('')
-        } else {
-            setBorder('1px solid yellow')
-        }
-        
-    },[term])
-
-    useEffect(() => {
         if (term.length > 0) {
             MovieDB.searchMovie(term, pageNumber).then(list => setMovies(list))
         }
@@ -56,21 +42,24 @@ const Catalog = (props) => {
 
     useEffect(() => {
         document.title = props.title
-    })
+    }, [])
 
     return (
         <>
             <NavComponent />
-            <div className='darken' />
             <div className='Catalog'>
+                <div className='catalog-hero-overlay' />
                 <div className="container" style={titleStyle}>
-                    <h1 className="home-title">Catalog</h1>
+                    <div>
+                        <h1 className="catalog-title">Search Catalog</h1>
+                        <p className="catalog-subtitle">Find any movie in our collection</p>
+                    </div>
                 </div>
             </div>
             <div className='sort'>
                 <div className="container">
                     <div className='catalog-sort'>
-                        <div className='search-field' style={searchBoxStyle} onKeyPress={keypressFunction}>
+                        <div className='search-field' onKeyPress={keypressFunction}>
                             <input type="text" placeholder='Search movies...' value={term} onChange={changeTerm}/>
                             <button onClick={searchMovie.bind(this, term, pageNumber)} className='search-button'>
                                 <ion-icon name="search-outline"></ion-icon>

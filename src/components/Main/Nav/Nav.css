@@ -1,129 +1,133 @@
 .Nav {
-    background-color: #1a191f;
+    background-color: rgba(10, 10, 15, 0.92);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
     position: fixed;
     top: 0;
-    z-index: 2;
-    height: 90px;
+    z-index: 10;
+    height: 68px;
     width: 100%;
-    color: rgb(150, 150, 150); 
-    box-shadow: 0px 2px 3px 0.5px rgb(22, 21, 21);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.Nav .container {
+    display: flex;
+    align-items: center;
+    height: 100%;
 }
 
 .logo {
-    font-size: 1.8rem;
-    font-weight: bold;
+    font-size: 1.45rem;
+    font-weight: 800;
     letter-spacing: 4px;
-    margin-right: 30px;
-    min-height: 100%;
+    margin-right: 48px;
+    white-space: nowrap;
+    color: #ffffff;
 }
 
 .highlight {
-    color: rgb(255, 220, 46);
+    color: #f5c518;
 }
 
 .nav-bar {
     display: flex;
-    justify-content: space-around;
-    width: 400px;
+    align-items: center;
+    gap: 2px;
     margin-left: auto;
-    /* border: 1px solid red */
 }
 
-.nav-bar div {
-    padding: 0 10px;
+.nav-link {
+    padding: 6px 16px;
+    border-radius: 6px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #6b6b6b;
+    transition: color 0.2s, background-color 0.2s;
+}
+
+.nav-link:hover {
+    color: #e8e8e8;
+    background-color: rgba(255, 255, 255, 0.06);
+}
+
+.nav-link.active-link {
+    color: #ffffff;
+    background-color: rgba(255, 255, 255, 0.08);
 }
 
 .burger {
     display: none;
     cursor: pointer;
     margin-left: auto;
+    padding: 6px;
 }
 
-.burger div{
-    width: 25px;
-    height: 3px;
-    background-color: rgb(150, 150, 150);
-    margin: 5px;
+.burger div {
+    width: 22px;
+    height: 2px;
+    background-color: #6b6b6b;
+    margin: 5px 0;
     transition: all 0.3s ease;
-    margin-left: auto;
 }
 
 @media screen and (max-width: 1360px) {
     .container {
-        max-width: 940px;
+        max-width: 960px;
     }
-  
-    .nav-bar {
-        width: 40%;
-    }
-  
-  }
-  
-  @media screen and (max-width: 980px) {
+}
+
+@media screen and (max-width: 980px) {
     .container {
-        max-width: 680px;
+        max-width: 720px;
     }
-  
-    .nav-bar {
-        width: 60%;
-    }
-  }
-  
-  @media screen and (max-width: 680px) {
+}
+
+@media screen and (max-width: 680px) {
     body {
         overflow-x: hidden;
-        /* background-color: rgba(0, 0, 0, 0.4); */
     }
-  
-    /* Nav */
-  
+
     .container {
-      /* width: 490px; */
-      padding: 0px 10px;
+        padding: 0 16px;
     }
-  
+
     .burger {
-      display: block;
+        display: block;
     }
-  
+
     .nav-bar {
-      position: absolute;
-      right: 0px;
-      height: 92vh;
-      top: 8vh;
-      background-color: #1a191f;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      width: 50%;
-      transform: translateX(100%);
-      transition: transform 0.3s ease-in;
-    }
-  }
-
-@keyframes navLinkFade {
-    from {
-        opacity: 0;
-        transform: translateX(100px);
+        position: absolute;
+        right: 0;
+        height: calc(100vh - 68px);
+        top: 68px;
+        background-color: #0f0f15;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        padding-top: 24px;
+        width: 60%;
+        transform: translateX(100%);
+        transition: transform 0.3s ease-in;
+        border-left: 1px solid rgba(255, 255, 255, 0.06);
     }
 
-    to {
-        opacity: 1;
-        transform: translateX(0);
+    .nav-link {
+        font-size: 1rem;
+        padding: 12px 24px;
     }
 }
 
 .toggle .line1 {
-    transform: rotate(-45deg) translate(-3px,3px)
-    
+    transform: rotate(-45deg) translate(-4px, 4px);
 }
 
 .toggle .line2 {
-    display: none;
+    opacity: 0;
 }
 
 .toggle .line3 {
-    transform: rotate(45deg) translate(-3px,-3px);
+    transform: rotate(45deg) translate(-4px, -4px);
 }
 
 #nav-active {
