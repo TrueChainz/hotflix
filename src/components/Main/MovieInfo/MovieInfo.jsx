@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { createPortal } from 'react-dom'
 import './MovieInfo.css'
 import { MovieDB } from '../../../util/MovieDB'
 
@@ -17,7 +18,7 @@ const MovieInfo = ({id, closeDisplay}) => {
     }, [])
 
 
-    return (
+    return createPortal(
         <>
             <div className='MovieInfo'>
                 <header className='info-header'>
@@ -90,7 +91,8 @@ const MovieInfo = ({id, closeDisplay}) => {
                 </div>
             </div>
             <div className='hide-background' onClick={closeDisplay}></div>
-        </>
+        </>,
+        document.body
     )
 }
 
