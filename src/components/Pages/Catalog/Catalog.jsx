@@ -11,6 +11,7 @@ const Catalog = (props) => {
     const [term, setTerm] = useState('')
     const [movies, setMovies] = useState([])
     const [totalPage, setTotalPage] = useState(0)
+    const [loading, setLoading] = useState(false)
 
     const NavComponent = props.components[0]
     const PaginationComponent = props.components[1]
@@ -24,7 +25,11 @@ const Catalog = (props) => {
             alert('Please provide a search term')
             return
         }
-        MovieDB.searchMovie(term, pageNumber).then(list => setMovies(list))
+        setLoading(true)
+        MovieDB.searchMovie(term, pageNumber).then(list => {
+            setMovies(list)
+            setLoading(false)
+        })
         MovieDB.numberOfSearchPages(term, pageNumber).then(num => setTotalPage(num))
     }
 
@@ -36,7 +41,11 @@ const Catalog = (props) => {
 
     useEffect(() => {
         if (term.length > 0) {
-            MovieDB.searchMovie(term, pageNumber).then(list => setMovies(list))
+            setLoading(true)
+            MovieDB.searchMovie(term, pageNumber).then(list => {
+                setMovies(list)
+                setLoading(false)
+            })
         }
     }, [pageNumber])
 
@@ -68,7 +77,7 @@ const Catalog = (props) => {
                     </div>
                 </div>
             </div>
-            <MovieList movies={movies}/>
+            <MovieList movies={movies} loading={loading}/>
             {totalPage > 0 && <PaginationComponent number={pageNumber} last={totalPage}/>}
         </>
     )

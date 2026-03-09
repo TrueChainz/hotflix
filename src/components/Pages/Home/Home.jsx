@@ -16,6 +16,7 @@ const Home = (props) => {
     const [movies, setMovies] = useState([])
     const [sortBy, setSortBy] = useState('popular')
     const [lastPage, setLastPage] = useState(0)
+    const [loading, setLoading] = useState(true)
 
     const NavComponent = props.components[0]
     const PaginationComponent = props.components[1]
@@ -36,7 +37,11 @@ const Home = (props) => {
     }
 
     useEffect(() => {
-        MovieDB.movies(pageNumber, sortBy).then(movies => setMovies(movies))
+        setLoading(true)
+        MovieDB.movies(pageNumber, sortBy).then(movies => {
+            setMovies(movies)
+            setLoading(false)
+        })
         MovieDB.numberOfPages(pageNumber, sortBy).then(pages => setLastPage(pages))
     }, [pageNumber, sortBy])
 
@@ -70,7 +75,7 @@ const Home = (props) => {
                     </ul>
                 </div>
             </div>
-            <MovieList movies={movies}/>
+            <MovieList movies={movies} loading={loading}/>
             <PaginationComponent  
             number={pageNumber} 
             last={lastPage}

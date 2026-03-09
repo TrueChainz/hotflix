@@ -18,6 +18,43 @@ const MovieInfo = ({id, closeDisplay}) => {
     }, [])
 
 
+    if (!movieDetails.title) return createPortal(
+        <>
+            <div className='MovieInfo'>
+                <header className='info-header'>
+                    <div className='header-left'>
+                        <div className='skeleton skel-title' />
+                        <div className='header-meta'>
+                            <div className='skeleton skel-pill' />
+                            <div className='skeleton skel-pill-sm' />
+                        </div>
+                    </div>
+                    <button className='close-btn' onClick={closeDisplay} aria-label="Close">✕</button>
+                </header>
+                <div className='movie-info'>
+                    <div className='poster-wrap'>
+                        <div className='skeleton skel-poster' />
+                    </div>
+                    <section className='info-section'>
+                        {Array.from({ length: 6 }, (_, i) => (
+                            <div key={i} className='info-title'>
+                                <div className='skeleton skel-label' />
+                                <div className='skeleton skel-value' />
+                            </div>
+                        ))}
+                        <div className='info-title summary-block'>
+                            <div className='skeleton skel-label' />
+                            <div className='skeleton skel-summary' />
+                            <div className='skeleton skel-summary' />
+                        </div>
+                    </section>
+                </div>
+            </div>
+            <div className='hide-background' onClick={closeDisplay}></div>
+        </>,
+        document.body
+    )
+
     return createPortal(
         <>
             <div className='MovieInfo'>

@@ -117,6 +117,57 @@
     color: #f5c518;
 }
 
+/* ── Skeleton card ────────────────────────────────── */
+.SkeletonCard {
+    width: calc(20% - 16px);
+    box-sizing: border-box;
+    margin-right: 20px;
+    margin-bottom: 24px;
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: #141418;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    flex-shrink: 0;
+}
+
+.skeleton-poster-img {
+    width: 100%;
+    aspect-ratio: 2 / 3;
+    display: block;
+}
+
+.SkeletonCard:nth-child(5n) { margin-right: 0; }
+
+@media screen and (max-width: 1360px) {
+    .SkeletonCard {
+        width: calc(25% - 16px);
+        margin-right: 21.33px;
+    }
+    .SkeletonCard:nth-child(5n) { margin-right: 21.33px; }
+    .SkeletonCard:nth-child(4n) { margin-right: 0; }
+}
+
+@media screen and (max-width: 980px) {
+    .SkeletonCard {
+        width: calc(33.33% - 14px);
+        margin-right: 21px;
+    }
+    .SkeletonCard:nth-child(5n),
+    .SkeletonCard:nth-child(4n) { margin-right: 21px; }
+    .SkeletonCard:nth-child(3n) { margin-right: 0; }
+}
+
+@media screen and (max-width: 680px) {
+    .SkeletonCard {
+        width: calc(50% - 8px);
+        margin-right: 16px;
+    }
+    .SkeletonCard:nth-child(5n),
+    .SkeletonCard:nth-child(4n),
+    .SkeletonCard:nth-child(3n) { margin-right: 16px; }
+    .SkeletonCard:nth-child(2n) { margin-right: 0; }
+}
+
 /* Grid layout */
 .Movie:nth-child(5n) {
     margin-right: 0;

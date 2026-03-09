@@ -1,11 +1,20 @@
 import React, { memo } from 'react'
 import Movie from '../Movie/Movie'
 
-const MovieList = memo(({ movies }) => {
+const SkeletonCard = () => (
+    <div className='SkeletonCard'>
+        <div className='skeleton-poster-img skeleton' />
+    </div>
+)
+
+const MovieList = memo(({ movies, loading }) => {
     return (
         <div className='MovieList' style={mainMovieList}>
             <div className='container' style={movieLists}>
-                {movies.map(movie => <Movie key={movie.id} movie={movie}/>) }
+                {loading
+                    ? Array.from({ length: 10 }, (_, i) => <SkeletonCard key={i} />)
+                    : movies.map(movie => <Movie key={movie.id} movie={movie}/>)
+                }
             </div>
         </div>
     )
@@ -24,4 +33,3 @@ const movieLists = {
 }
 
 export default MovieList
-
